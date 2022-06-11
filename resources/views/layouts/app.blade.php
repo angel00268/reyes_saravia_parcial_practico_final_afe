@@ -59,6 +59,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/banks') }}">Bancos</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/landing') }}">Reportes</a>
+                            </li>
                             @can('user read')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/auditores') }}">Auditores</a>
