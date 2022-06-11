@@ -58,6 +58,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/banks') }}">Bancos</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/landing') }}">Reportes</a>
+                            </li>
                         @endauth
                     </ul>
 

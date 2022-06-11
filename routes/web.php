@@ -42,6 +42,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/summary', function () {
         return view('summary.index');
     });
+
+    /*Landing Page para Reportes*/
+    Route::get('/landing',[PDFController::class,'index'])->name('landing.index');
+
 });
 
 
