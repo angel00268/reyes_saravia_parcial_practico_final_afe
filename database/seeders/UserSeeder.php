@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'Angel Saravia',
             'email' => 'angel@vendedor.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('angel123'),
+            'password' => 'angel123',
             'remember_token' => Str::random(10),
         ])->assignRole('Vendedor');
 
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => 'password',
             'remember_token' => Str::random(10),
         ])->assignRole('Vendedor');
 
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => 'password',
             'remember_token' => Str::random(10),
         ])->assignRole('Vendedor');
 
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => 'password',
             'remember_token' => Str::random(10),
         ])->assignRole('Vendedor');
 
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => 'password',
             'remember_token' => Str::random(10),
         ])->assignRole('Auditor');
     }
