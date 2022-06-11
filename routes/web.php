@@ -22,10 +22,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('api/document', DocumentController::class);
     Route::resource('api/bank', BankController::class);
 
-   
+
     Route::get('/suppliers', function () {
         return view('supplier.index');
-    });
+    })->name('supp.index');
 
     Route::get('/documents', function () {
         return view('document.index');

@@ -11,9 +11,10 @@
           <div class="col-md-4 pt-3">
             <label class="form-label">Nombre</label>
             <input class="form-control" type="text" v-model="bank.name_bank" />
+            <div v-if="errors && errors.name_bank" class="text-danger">{{ errors.name_bank[0] }}</div>
           </div>
           <div class="col-md-12 pt-3">
-            <a href="#" style="background-color: #63B4B8" 
+            <a href="#" style="background-color: #63B4B8"
                         class="btn mr-2 my-2 text-white" @click="save()">
               <i class="fa fa-save"></i> {{ textButton }}</a
             >
@@ -50,6 +51,7 @@ export default {
       headers: ["#", "Nombre","Acciones"],
       textButton: "Guardar",
       loading: false,
+      errors: {},
       allerrors: []
     };
   },
@@ -65,6 +67,7 @@ export default {
       let res = await axios.get("api/bank");
       this.banks = res.data.banks;
       this.loading = false;
+      this.errors = {};
     },
 
     async save() {
@@ -72,7 +75,9 @@ export default {
       switch (this.textButton) {
         case "Guardar":
           res = await axios.post("api/bank", this.bank).catch((e) => {
-            ui.alert("No se pudo registrar.");
+              if (e.response.status === 422) {
+                this.errors = e.response.data.errors;
+              }
           });
 
           if (res.data.message == "success") {

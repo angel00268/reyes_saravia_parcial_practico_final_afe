@@ -33,7 +33,7 @@
 </style>
 <body>
     <div id="app">
-        <nav  style="background-color: #9772FB" 
+        <nav  style="background-color: #9772FB"
         class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
@@ -47,10 +47,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav me-auto text-white">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/suppliers') }}">Proveedores</a>
+                                <a class="nav-link {{request()->routeIs('supp.index') ? 'text-white':''}}" href="{{ url('/suppliers') }}">Proveedores</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/documents') }}">Cuentas</a>

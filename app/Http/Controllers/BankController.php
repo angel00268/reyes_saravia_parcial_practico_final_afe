@@ -29,7 +29,7 @@ class BankController extends Controller
     {
         $request->validate([
             'name_bank' => 'required',
-        ]);       
+        ],[],['name_bank' => 'Nombre del banco']);
         Bank::insert($request->all());
         return response()->json(['message'=>'success']);
     }
