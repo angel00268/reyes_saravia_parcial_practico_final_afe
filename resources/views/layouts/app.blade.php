@@ -64,6 +64,11 @@
                                     <a class="nav-link" href="{{ url('/auditores') }}">Auditores</a>
                                 </li>
                             @endcan
+                            @can('product read')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/productos') }}">Productos</a>
+                                </li>
+                            @endcan
                         @endauth
                     </ul>
 

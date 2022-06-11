@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/productos', function () {
         return view('product.index');
-    });
+    })->middleware('can_view:product');;
 
     Route::get('/auditores', function () {
         return view('auditor.index');
