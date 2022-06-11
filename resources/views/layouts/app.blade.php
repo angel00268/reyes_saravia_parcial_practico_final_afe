@@ -27,14 +27,14 @@
     <script src="https://kit.fontawesome.com/52ce7aca36.js" crossorigin="anonymous"></script>
 </head>
 <style>
-    *{
+    * {
         font-family: 'Poppins', sans-serif;
     }
 </style>
+
 <body>
     <div id="app">
-        <nav  style="background-color: #9772FB"
-        class="navbar navbar-expand-md navbar-light shadow-sm">
+        <nav style="background-color: #9772FB" class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -50,7 +50,8 @@
                     <ul class="navbar-nav me-auto text-white">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link {{request()->routeIs('supp.index') ? 'text-white':''}}" href="{{ url('/suppliers') }}">Proveedores</a>
+                                <a class="nav-link {{ request()->routeIs('supp.index') ? 'text-white' : '' }}"
+                                    href="{{ url('/suppliers') }}">Proveedores</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/documents') }}">Cuentas</a>
@@ -58,6 +59,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/banks') }}">Bancos</a>
                             </li>
+                            @can('user read')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/auditores') }}">Auditores</a>
+                                </li>
+                            @endcan
                         @endauth
                     </ul>
 
@@ -86,7 +92,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -108,12 +114,12 @@
     </div>
     <script>
         @auth
-          window.Permissions = {!! json_encode(Auth::user()->allPermissions, true) !!};
+        window.Permissions = {!! json_encode(Auth::user()->allPermissions, true) !!};
         @else
-          window.Permissions = [];
+            window.Permissions = [];
         @endauth
-      </script>
-      @stack('scripts')
+    </script>
+    @stack('scripts')
 </body>
 
 </html>
