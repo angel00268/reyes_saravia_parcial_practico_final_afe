@@ -10,20 +10,28 @@ class RoleSeeder extends Seeder
 {
     public function run()
     {
-        $admin = Role::create(['name' => 'Administrador']);
-        $user = Role::create(['name' => 'Usuario']);
+        $seller = Role::create(['name' => 'Vendedor']);
+        $auditor = Role::create(['name' => 'Auditor']);
 
         Permission::create(['name' => 'user read']);
         Permission::create(['name' => 'user detail']);
         Permission::create(['name' => 'user update']);
         Permission::create(['name' => 'user create']);
         Permission::create(['name' => 'user delete']);
-        Permission::create(['name' => 'bank read']);
-        Permission::create(['name' => 'bank detail']);
-        Permission::create(['name' => 'bank update']);
-        Permission::create(['name' => 'bank create']);
-        Permission::create(['name' => 'bank delete']);
+        Permission::create(['name' => 'product read']);
+        Permission::create(['name' => 'product detail']);
+        Permission::create(['name' => 'product update']);
+        Permission::create(['name' => 'product create']);
+        Permission::create(['name' => 'product delete']);
+        Permission::create(['name' => 'report create']);
+        Permission::create(['name' => 'report view']);
 
-        $admin->syncPermissions(Permission::all());
+        $seller->syncPermissions(Permission::all());
+        $auditor->syncPermissions([
+            'product read',
+            'report create',
+            'report create',
+            'report view',
+        ]);
     }
 }
