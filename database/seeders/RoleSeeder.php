@@ -28,7 +28,6 @@ class RoleSeeder extends Seeder
 
         $seller->syncPermissions(Permission::all());
         $auditor->syncPermissions([
-            'product read',
             'report create',
             'report create',
             'report view',

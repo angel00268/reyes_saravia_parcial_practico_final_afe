@@ -61,10 +61,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/landing',[PDFController::class,'index'])->name('landing.index');
     Route::get('/productsReportsAuditor', [PDFController::class, 'auditorReport']);
     Route::get('/productsReportsVendedor/{id}', [PDFController::class, 'vendedorReport']);
-    Route::get('/sellerReports', [PDFController::class, 'sellerReport']);    
-    Route::get('/paramReport/{id}', [PDFController::class, 'parametrizadoReport'])->name('PDF.param');    
+    Route::get('/sellerReports', [PDFController::class, 'sellerReport']);
+    Route::get('/paramReport/{id}', [PDFController::class, 'parametrizadoReport'])->name('PDF.param');
 
 });
 
 
-Auth::routes(['reset'=>false]);
+Auth::routes(['register' => false, 'reset'=>false]);
