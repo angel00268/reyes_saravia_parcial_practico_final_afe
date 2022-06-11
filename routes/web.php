@@ -7,7 +7,10 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
+use App\Models\Product;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +25,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('api/document', DocumentController::class);
     Route::resource('api/bank', BankController::class);
 
+    Route::resource('api/auditores', UserController::class);
+    Route::resource('api/productos', ProductController::class);
+
 
     Route::get('/suppliers', function () {
         return view('supplier.index');
@@ -34,6 +40,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/banks', function () {
         return view('bank.index');
     });
+
+    Route::get('/productos', function () {
+        return view('product.index');
+    });
+
+    Route::get('/auditores', function () {
+        return view('auditor.index');
+    })->middleware('can_view:user');
 
     Route::get('/reports', function () {
         return view('reports');
